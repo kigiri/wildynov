@@ -3,7 +3,7 @@ const bodyParser = require ('body-parser');
 const mysql = require ('mysql');
 const app = express();
 
-// Middleware
+/////////// Middleware/////////////////////
 
 app.use(bodyParser.urlencoded({ extended: false }))
 app.use(bodyParser.json())
@@ -12,7 +12,7 @@ app.use(bodyParser.json())
 
 
 
-//Routes
+////////////Routes//////////////////////
 
 app.get('/', (req, res) => {
  res.send('ok');
@@ -20,6 +20,6 @@ app.get('/', (req, res) => {
 
 
 
-//Port server
+////////////////Port server//////////////////////
 
 app.listen(8080, console.log('je suis connecté'))
