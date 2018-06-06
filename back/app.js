@@ -3,11 +3,12 @@ const bodyParser = require ('body-parser');
 const mysql = require ('mysql');
 const app = express();
 const connection = require('./helpers/connect.js')
+const cors = require('cors')
 /////////// Middleware/////////////////////
 
 app.use(bodyParser.urlencoded({ extended: false }))
 app.use(bodyParser.json())
-
+app.use(cors())
 
 
 
