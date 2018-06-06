@@ -1,6 +1,6 @@
 const express = require('express');
 const router = express.Router();
-const db = require('../..helpers/db.js');
+const connection = require('../../helpers/connect.js');
 
 
 router.post('/connexion', (req, res) => {
@@ -12,6 +12,14 @@ router.post('/inscription', (req, res) => {
 })
 
 router.get('/:id', (req, res) => {
-    res.send('ok')
+const id = req.params.id
+    res.send(id)
 })
 
+
+
+
+
+
+
+module.exports = router;

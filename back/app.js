@@ -2,14 +2,20 @@ const express = require ('express');
 const bodyParser = require ('body-parser');
 const mysql = require ('mysql');
 const app = express();
+const profilRouter = require('./routes/profil/profil.js')
 const connection = require('./helpers/connect.js')
 const cors = require('cors')
-/////////// Middleware/////////////////////
+const morgan = require('morgan');
 
+/////////// Middleware/////////////////////
+app.use(morgan('dev'));
 app.use(bodyParser.urlencoded({ extended: false }))
 app.use(bodyParser.json())
 app.use(cors())
 
+////////////ROUTING////////////////////////
+
+app.use('/profil', profilRouter)
 
 
 
