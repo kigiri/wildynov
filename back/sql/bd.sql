@@ -1,7 +1,18 @@
 
-DROP DATABASE IF EXISTS  projectynov;
+#------------------------------------------------------------
+#        Script MySQL.
+#------------------------------------------------------------
+
+DROP DATABASE IF EXISTS projectynov;
 CREATE DATABASE projectynov;
+CREATE USER IF NOT EXISTS 'server'@'localhost';
+GRANT ALL PRIVILEGES ON projectynov.*  To 'server'@'localhost' IDENTIFIED BY 'mysql';
+ 
+
 USE projectynov;
+#------------------------------------------------------------
+# Table: profile
+#------------------------------------------------------------
 
 CREATE TABLE profile(
         id         Int  Auto_increment  NOT NULL ,
@@ -17,8 +28,11 @@ CREATE TABLE profile(
 	,CONSTRAINT profile_PK PRIMARY KEY (id)
 )ENGINE=InnoDB;
 
+#------------------------------------------------------------
+# Table: projet
+#------------------------------------------------------------
 
-CREATE TABLE projet(
+CREATE TABLE project(
         id_profile           Int NOT NULL ,
         id                   Int NOT NULL ,
         title                Varchar (255) NOT NULL ,
@@ -37,8 +51,8 @@ CREATE TABLE projet(
         skill                Integer NOT NULL ,
         created_at_profile   Datetime NOT NULL ,
         updated_at           Datetime NOT NULL
-	,CONSTRAINT projet_PK PRIMARY KEY (id_profile,id)
-	,CONSTRAINT projet_profile_FK FOREIGN KEY (id_profile) REFERENCES profile(id)
+	,CONSTRAINT project_PK PRIMARY KEY (id_profile,id)
+	,CONSTRAINT project_profile_FK FOREIGN KEY (id_profile) REFERENCES profile(id)
 )ENGINE=InnoDB;
 
 

@@ -22,7 +22,7 @@ app.use('/profil', profilRouter)
 ////////////Routes//////////////////////
 
 app.get('/', (req, res) => {
- res.send('ok');
+ res.send('Projet  ynov');
 })
 
 
@@ -31,7 +31,7 @@ connection.connect( (error)=>{
     if(error){
         console.log(error)
     }else{
-        console.log('succès')
+        console.log('Base de données connecté')
     }
 })
 
@@ -39,7 +39,7 @@ connection.query('SELECT * FROM profile', (error, results, fields)=>{
     if(!!error){
         console.log(error)
     }else {
-        console.log('ok')
+        console.log('connecté')
     }
 })
 
@@ -47,4 +47,4 @@ connection.query('SELECT * FROM profile', (error, results, fields)=>{
 
 ////////////////Port server//////////////////////
 
-app.listen(8080, console.log('je suis connecté'))
+app.listen(8080, console.log('Je suis connecté sur le port 8080'))
