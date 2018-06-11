@@ -35,13 +35,6 @@ connection.connect( (error)=>{
     }
 })
 
-connection.query('SELECT * FROM profile', (error, results, fields)=>{
-    if(!!error){
-        console.log(error)
-    }else {
-        console.log('ok')
-    }
-})
 
 
 
