@@ -11,16 +11,16 @@ USE projectynov;
 
 CREATE TABLE profile(
         id         Int  Auto_increment  NOT NULL,
-        name       Varchar (255) NOT NULL,
-        first_name Varchar (255) NOT NULL,
-        year       Date NOT NULL,
-        campus     Varchar (255) NOT NULL,
-        password   Varchar (255) NOT NULL,
-        email      Varchar (255) NOT NULL,
-        skill      Integer NOT NULL ,
-        created_at Datetime NOT NULL,
-        updated_at Datetime NOT NULL
-	,CONSTRAINT profile_PK PRIMARY KEY (id)
+        name       Varchar (255),
+        first_name Varchar (255) ,
+        year       Date,
+        campus     Varchar (255),
+        password   Varchar (255),
+        email      Varchar (255),
+        skill      Integer,
+        created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
+        updated_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
+	PRIMARY KEY (id)
 )ENGINE=InnoDB;
 
 

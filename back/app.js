@@ -2,7 +2,7 @@ const express = require ('express');
 const bodyParser = require ('body-parser');
 const mysql = require ('mysql');
 const app = express();
-const profilRouter = require('./routes/profil/profil.js')
+const profilRouter = require('./routes/authcontrol/auth.js')
 const connection = require('./helpers/connect.js')
 const cors = require('cors')
 const morgan = require('morgan');
@@ -15,7 +15,7 @@ app.use(cors())
 
 ////////////ROUTING////////////////////////
 
-app.use('/profil', profilRouter)
+app.use('/auth', profilRouter)
 
 
 
