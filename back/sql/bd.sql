@@ -16,7 +16,7 @@ CREATE TABLE profile(
         year       Date,
         campus     Varchar (255),
         password   Varchar (255),
-        email      Varchar (255),
+        email      Varchar (255) UNIQUE,
         skill      Integer,
         created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
         updated_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP,

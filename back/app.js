@@ -35,18 +35,6 @@ connection.connect( (error)=>{
     }
 })
 
-<<<<<<< HEAD
-=======
-connection.query('SELECT * FROM profile', (error, results, fields)=>{
-    if(!!error){
-        console.log(error)
-    }else {
-        console.log('connecté')
-    }
-})
->>>>>>> f0d47709e9fc368fd1e88c556e13cc8473aa3a1a
-
-
 
 ////////////////Port server//////////////////////
 
