@@ -6,6 +6,9 @@ const profilRouter = require('./routes/authcontrol/auth.js')
 const connection = require('./helpers/connect.js')
 const cors = require('cors')
 const morgan = require('morgan');
+const nodemailer = require('nodemailer')
+
+
 
 /////////// Middleware/////////////////////
 app.use(morgan('dev'));
