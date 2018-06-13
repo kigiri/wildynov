@@ -18,7 +18,7 @@ router.post('/signup', (req, res) => {
             return res.status(500).json({
                 flash: err.message
             })
-            console.log(err)
+   
         } else {
             //////////MAILING /////////////
             
@@ -63,7 +63,6 @@ router.post('/signup', (req, res) => {
         }
     })
 })
-
 
 
 
