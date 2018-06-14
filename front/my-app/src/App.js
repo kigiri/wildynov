@@ -17,7 +17,7 @@ class App extends Component {
           <MuiThemeProvider>
 
           <Logo />
-          <Profil/>
+          <Login/>
          {/* < Login />     */}
          </MuiThemeProvider> 
       </div>
