@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import './App.css';
-import FormProject from './formProject.js'
+import FormProject from './components/formProject/formProject.js'
 
 const styles= {
   textAlign:'center',
