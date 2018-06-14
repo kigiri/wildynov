@@ -2,15 +2,27 @@ const express = require('express');
 const router = express.Router();
 const connection = require('../../helpers/connect.js');
 const nodemailer = require('nodemailer')
+const { check, validationResult } = require('express-validator/check')
 
 
 
+router.post('/signup', [check('email').isEmail()], (req, res) => {
 
-router.post('/signup', (req, res) => {
+ const emailing = req.body.email
+
+ ////////////verif if email valide /////////////
+ 
+    const errors = validationResult(req);
+  if (!errors.isEmpty()) {
+    return res.status(422).json({ errors: errors.array() });
+  }
+
+
+////////////INSERT DATA ////////////////////////////////////
 
     const randomPass = Math.random().toString(36).slice(-8); ///////RANDOM PASSWORD////
     const sql = `INSERT INTO profile (email, password) VALUES (?,?)` ///////INSERT VALUE MYSQL//////
-    const emailing = req.body.email
+   
 
 
     connection.query(sql, [emailing, randomPass], function(err, result) {
@@ -66,12 +78,20 @@ router.post('/signup', (req, res) => {
 
 
 
-router.post('/login', (req, res) => {
-    
-const password = req.body.password
+router.post('/login',[check('email').isEmail()], (req, res) => {
 
+ const password = req.body.password
 const email = req.body.email
   
+////////check if mail is valide ////////
+const errors = validationResult(req);
+  if (!errors.isEmpty()) {
+    return res.status(422).json({ errors: errors.array() });
+  }
+///////////////////////////////////////////
+
+
+//////check into database if password and mail match //////////////
 
   connection.query('SELECT * FROM profile WHERE email = ?', [email], function(error, results, fields) {
 
