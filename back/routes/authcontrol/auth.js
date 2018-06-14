@@ -67,8 +67,47 @@ router.post('/signup', (req, res) => {
 
 
 router.post('/login', (req, res) => {
-    res.send('ok')
-});
+    
+const password = req.body.password
+
+const email = req.body.email
+  
+
+  connection.query('SELECT * FROM profile WHERE email = ?', [email], function(error, results, fields) {
+
+  if (error) {
+      // console.log("error ocurred",error);
+
+      res.send({
+          "code": 400,
+          "failed": "error ocurred"
+      })
+
+  } else {
+      // console.log('The solution is: ', results);
+      if (results.length > 0) {
+          if (results[0].password == password) {
+              res.send({
+                  "code": 200,
+                  "success": "login sucessfull"
+              });
+          } else {
+              res.send({
+                  "code": 204,
+                  "success": "Email and password does not match"
+              });
+          }
+      } else {
+          res.send({
+              "code": 204,
+              "success": "Email does not exits"
+          });
+      }
+  }
+  });
+  })
+
+
 
 
 
