@@ -3,7 +3,10 @@ import Login from './components/login/Login';
 import './App.css';
 import MuiThemeProvider from 'material-ui/styles/MuiThemeProvider';
 import Logo from './components/Logo'
-import Register from './components/login/Register'
+import Register from './components/login/Register';
+import Profil from './components/profil/Profil';
+import Projet from './components/projet/Projet'
+
 class App extends Component {
   render() {
     return (
@@ -12,8 +15,10 @@ class App extends Component {
           <h1>Projet Ynov</h1> */}
 
           <MuiThemeProvider>
+
           <Logo />
-         < Login />    
+          <Profil/>
+         {/* < Login />     */}
          </MuiThemeProvider> 
       </div>
     );

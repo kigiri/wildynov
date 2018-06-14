@@ -1,8 +1,16 @@
 import React, { Component } from 'react';
-import MuiThemeProvider from 'material-ui/styles/MuiThemeProvider';
 import './Login.css'
-import RaisedButton from 'material-ui/RaisedButton';
 import TextField from 'material-ui/TextField';
+import { MuiThemeProvider, createMuiTheme } from '@material-ui/core/styles';
+import Button from '@material-ui/core/Button';
+
+
+
+const theme = createMuiTheme({
+  palette: {
+    primary: { main: '#3f51b5' },
+  },
+})
 class Login extends Component {
 constructor(props){
   super(props);
@@ -14,13 +22,14 @@ constructor(props){
 render() {
     return (
       <div>
-        <MuiThemeProvider>
+         <MuiThemeProvider theme={theme}>
           
         <nav>
      
-           <TextField
+           <TextField 
              hintText="Enter your Username"
-             floatingLabelText="Username"             
+             floatingLabelText="Username" 
+             variant="raised" color="primary"            
              />
            <br/>
              <TextField
@@ -29,8 +38,9 @@ render() {
                floatingLabelText="Password"
                />
             <br/>
-             <RaisedButton label="Connexion" primary={true} style={style} />
-             <RaisedButton label="Register" primary={true} style={style} />
+            <Button variant="raised" color="primary" style={style}>Connexion</Button>
+            <Button variant="raised" color="primary" style={style}>Premiere connexion</Button>
+             
              </nav>
              
          </MuiThemeProvider>
