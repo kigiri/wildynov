@@ -22,7 +22,7 @@ constructor(props){
 render() {
     return (
       <div>
-         <MuiThemeProvider theme={theme}>
+         {/* <MuiThemeProvider theme={theme}> */}
           
         <nav>
      
@@ -43,7 +43,7 @@ render() {
              
              </nav>
              
-         </MuiThemeProvider>
+         {/* </MuiThemeProvider> */}
         
       </div>
     );
