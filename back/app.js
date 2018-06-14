@@ -2,10 +2,13 @@ const express = require ('express');
 const bodyParser = require ('body-parser');
 const mysql = require ('mysql');
 const app = express();
-const profilRouter = require('./routes/profil/profil.js')
+const profilRouter = require('./routes/authcontrol/auth.js')
 const connection = require('./helpers/connect.js')
 const cors = require('cors')
 const morgan = require('morgan');
+const nodemailer = require('nodemailer')
+
+
 
 /////////// Middleware/////////////////////
 app.use(morgan('dev'));
@@ -15,14 +18,14 @@ app.use(cors())
 
 ////////////ROUTING////////////////////////
 
-app.use('/profil', profilRouter)
+app.use('/auth', profilRouter)
 
 
 
 ////////////Routes//////////////////////
 
 app.get('/', (req, res) => {
- res.send('ok');
+ res.send('Projet  ynov');
 })
 
 
@@ -31,20 +34,11 @@ connection.connect( (error)=>{
     if(error){
         console.log(error)
     }else{
-        console.log('succès')
+        console.log('Base de données connecté')
     }
 })
-
-connection.query('SELECT * FROM profile', (error, results, fields)=>{
-    if(!!error){
-        console.log(error)
-    }else {
-        console.log('ok')
-    }
-})
-
 
 
 ////////////////Port server//////////////////////
 
-app.listen(8080, console.log('je suis connecté'))
+app.listen(8080, console.log('Je suis connecté sur le port 8080'))
