@@ -3,7 +3,7 @@ const router = express.Router();
 const connection = require('../../helpers/connect.js');
 const nodemailer = require('nodemailer')
 const { check, validationResult } = require('express-validator/check')
-
+const bcrypt = require('bcrypt');
 
 
 router.post('/signup', [check('email').isEmail()], (req, res) => {
@@ -11,7 +11,7 @@ router.post('/signup', [check('email').isEmail()], (req, res) => {
  const emailing = req.body.email
 
  ////////////verif if email valide /////////////
- 
+
     const errors = validationResult(req);
   if (!errors.isEmpty()) {
     return res.status(422).json({ errors: errors.array() });
@@ -20,12 +20,13 @@ router.post('/signup', [check('email').isEmail()], (req, res) => {
 
 ////////////INSERT DATA ////////////////////////////////////
 
-    const randomPass = Math.random().toString(36).slice(-8); ///////RANDOM PASSWORD////
-    const sql = `INSERT INTO profile (email, password) VALUES (?,?)` ///////INSERT VALUE MYSQL//////
-   
+const randomPass = Math.random().toString(36).slice(-8); ///////RANDOM PASSWORD////
+const sql = `INSERT INTO profile (email, password) VALUES (?,?)` ///////INSERT VALUE MYSQL//////
+ const saltRounds = 8;
 
-
-    connection.query(sql, [emailing, randomPass], function(err, result) {
+bcrypt.hash(randomPass, saltRounds, function (err, hash) {
+    // Store hash in your password DB
+    connection.query(sql, [emailing, hash], function(err, result) {
         if (err) {
             return res.status(500).json({
                 flash: err.message
@@ -75,57 +76,52 @@ router.post('/signup', [check('email').isEmail()], (req, res) => {
         }
     })
 })
-
+});
 
 
 router.post('/login',[check('email').isEmail()], (req, res) => {
 
- const password = req.body.password
-const email = req.body.email
+  const password = req.body.password
+  const email = req.body.email
   
-////////check if mail is valide ////////
-const errors = validationResult(req);
-  if (!errors.isEmpty()) {
-    return res.status(422).json({ errors: errors.array() });
+  ////////check if mail is valide ////////
+  const validationErrors = validationResult(req);
+  if (!validationErrors.isEmpty()) {
+    return res.status(422).json({ errors: validationErrors.array() });
   }
-///////////////////////////////////////////
+  ///////////////////////////////////////////
 
+  //////check into database if password and mail match //////////////
 
-//////check into database if password and mail match //////////////
-
-  connection.query('SELECT * FROM profile WHERE email = ?', [email], function(error, results, fields) {
-
-  if (error) {
+  connection.query('SELECT * FROM profile WHERE email = ?', [email], function(selectError, results, fields) {
+    if (selectError) {
       // console.log("error ocurred",error);
-
       res.send({
           "code": 400,
           "failed": "error ocurred"
       })
-
-  } else {
-      // console.log('The solution is: ', results);
-      if (results.length > 0) {
-          if (results[0].password == password) {
-              res.send({
-                  "code": 200,
-                  "success": "login sucessfull"
-              });
-          } else {
-              res.send({
-                  "code": 204,
-                  "success": "Email and password does not match"
-              });
-          }
-      } else {
+    } else if (results.length < 1) {
+      res.send({
+        "code": 204,
+        "success": "Email does not exits"
+      });
+    } else {
+      bcrypt.compare(password, results[0].password, function (bcryptError, validPassword) {
+        if (!validPassword || bcryptError) {
           res.send({
-              "code": 204,
-              "success": "Email does not exits"
+            "code": 204,
+            "success": "Email and password does not match"
           });
-      }
-  }
-  });
+        } else {
+          res.send({
+            "code": 200,
+            "success": "login sucessfull"
+          });
+        }
+      })
+    }
   })
+})
 
 
 
