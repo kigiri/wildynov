@@ -1,7 +1,8 @@
 import React, { Component } from 'react';
 import Button from '@material-ui/core/Button';
 import TextField from '@material-ui/core/TextField';
-
+import Demo from '../Demo'
+import './formProject.css'
 
 
 class FormProject extends Component {
@@ -12,9 +13,7 @@ class FormProject extends Component {
       title:"",
       description:"",
       deadline_project:"",
-      application:"",
-      tag:""
-    
+      application:""
     };
   }
 
@@ -33,7 +32,7 @@ handleSubmit = (event) => {
   render() {
     return (
       <div>
-
+ <Demo />
         <h1> Nouveau Projet </h1>
         <br/>
     
@@ -93,25 +92,8 @@ handleSubmit = (event) => {
           onChange={this.updateInputField.bind(this)}
         />
         </div>
-        
-    
-
-        <div>
-        <TextField
-          required
-          id="required"
-          value={this.state.tag}
-          label="mots clés"
-          defaultValue="mots clés"
-          name="tag"
-          margin="normal"
-          onChange={this.updateInputField.bind(this)}
-        />
-        </div>
         <br/>
 
-        
-        
        
       <div>
       <Button variant="contained" type="submit" color="primary">

@@ -1,5 +1,4 @@
 import React, { Component } from 'react';
-import './Login.css'
 import TextField from 'material-ui/TextField';
 import { MuiThemeProvider, createMuiTheme } from '@material-ui/core/styles';
 import Button from '@material-ui/core/Button';
@@ -11,7 +10,7 @@ const theme = createMuiTheme({
     primary: { main: '#3f51b5' },
   },
 })
-class Login extends Component {
+class LoginAdmin extends Component {
 constructor(props){
   super(props);
   this.state={
@@ -27,8 +26,8 @@ render() {
         <nav>
      
            <TextField 
-             hintText="Enter your Username"
-             floatingLabelText="Username" 
+             hintText="Enter your mail"
+             floatingLabelText="Admin" 
              variant="raised" color="primary"            
              />
            <br/>
@@ -39,7 +38,6 @@ render() {
                />
             <br/>
             <Button variant="raised" color="primary" style={style}>Connexion</Button>
-            <Button variant="raised" color="primary" style={style}>Premiere connexion</Button>
              
              </nav>
              
@@ -54,4 +52,4 @@ const style = {
   margin: 15,
  };
 
-export default Login;
+export default LoginAdmin;
