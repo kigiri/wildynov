@@ -3,7 +3,7 @@ import Login from './components/login/Login';
 import './App.css';
 import MuiThemeProvider from 'material-ui/styles/MuiThemeProvider';
 import Logo from './components/Logo'
-import Register from './components/login/Register'
+
 class App extends Component {
   render() {
     return (

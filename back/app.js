@@ -4,6 +4,7 @@ const mysql = require ('mysql');
 const app = express();
 const profilRouter = require('./routes/authcontrol/auth.js');
 const projetsRouter = require('./routes/allprojets/projets.js');
+const addProjetsRouter = require('./routes/allprojets/addProjets.js');
 const connection = require('./helpers/connect.js');
 const cors = require('cors');
 const morgan = require('morgan');
@@ -20,7 +21,7 @@ app.use(cors())
 ////////////ROUTING////////////////////////
 app.use('/auth', profilRouter)
 app.use('/allprojets', projetsRouter)
-
+app.use('/allprojets', addProjetsRouter)
 
 
 ////////////Routes//////////////////////
