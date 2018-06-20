@@ -7,8 +7,8 @@ const connection = require('./helpers/connect.js')
 const cors = require('cors')
 const morgan = require('morgan');
 const nodemailer = require('nodemailer');
-const adminRouter = require('./routes/authcontrol/authAdmin.js')
-const validator = require('express-validator')
+const adminRouter = require('./routes/authcontrol/authAdmin.js');
+const validator = require('express-validator');
 
 
 /////////// Middleware/////////////////////

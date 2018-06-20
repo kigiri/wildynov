@@ -18,9 +18,8 @@ class FormProject extends Component {
   }
 
 updateInputField(event){
-  this.setState({
-    
-    [event.target.name]: event.target.value
+  this.setState({ 
+  [event.target.name]: event.target.value
   })
 }
 
@@ -32,76 +31,75 @@ handleSubmit = (event) => {
   render() {
     return (
       <div>
- <Demo />
+        <Demo />
         <h1> Nouveau Projet </h1>
         <br/>
     
-
         <form onSubmit={this.handleSubmit.bind(this)}>
 
-        <TextField
-        id="date"
-        name="deadline_application"
-        label="candidature"
-        type="date"
-        defaultValue=""
-        InputLabelProps={{
-          shrink: true,
-        }}
-        onChange={this.updateInputField.bind(this)}
-      />
-
-        <TextField
-        id="date"
-        name="deadline_project"
-        label="fin du projet "
-        type="date"
-        defaultValue=""
-        InputLabelProps={{
-          shrink: true,
-        }}
-        onChange={this.updateInputField.bind(this)}
-      />
-
-        <div>
-        <TextField
-          required
-          id="required"
-          multiline
-          rowsMax="3"
-          value={this.state.title}
-          label="titre du projet"
+          <TextField
+          id="date"
+          name="deadline_application"
+          label="candidature"
+          type="date"
           defaultValue=""
-          name="title"
-          margin="normal"
+          InputLabelProps={{
+          shrink: true,
+          }}
           onChange={this.updateInputField.bind(this)}
         />
+
+          <TextField
+          id="date"
+          name="deadline_project"
+          label="fin du projet "
+          type="date"
+          defaultValue=""
+          InputLabelProps={{
+            shrink: true,
+          }}
+          onChange={this.updateInputField.bind(this)}
+        />
+
+        <div>
+            <TextField
+            required
+            id="required"
+            multiline
+            rowsMax="3"
+            value={this.state.title}
+            label="titre du projet"
+            defaultValue=""
+            name="title"
+            margin="normal"
+            onChange={this.updateInputField.bind(this)}
+          />
         </div>
             
         <div>
-        <TextField
-          required
-          id="required"
-          multiline
-          rowsMax="20"
-          value={this.state.description} 
-          label="description du projet"
-          defaultValue=""
-          name="description"
-          margin="normal"
-          onChange={this.updateInputField.bind(this)}
-        />
+          <TextField
+            required
+            id="required"
+            multiline
+            rowsMax="20"
+            value={this.state.description} 
+            label="description du projet"
+            defaultValue=""
+            name="description"
+            margin="normal"
+            onChange={this.updateInputField.bind(this)}
+          />
         </div>
         <br/>
 
        
-      <div>
-      <Button variant="contained" type="submit" color="primary">
-      Valider </Button> 
-      </div>
-      </form>
-      </div>
-    );
+        <div>
+        <Button variant="contained" type="submit" color="primary">
+        Valider </Button> 
+        </div>
+        </form>
+        </div>
+      );
   
 }
 }

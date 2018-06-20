@@ -11,6 +11,7 @@ import Register from './components/login/Register';
 import Profil from './components/profil/Profil';
 import Projet from './components/projet/Projet';
 import LoginAdmin from './components/loginAdmin/LoginAdmin.js'
+import ClippedDrawer from './components/adminAllprojects/adminProjects.js'
 
 class App extends Component {
   render() {
@@ -23,7 +24,7 @@ class App extends Component {
 
           <MuiThemeProvider>
           <Logo/> 
-        <LoginAdmin/>
+        <ClippedDrawer/>
 
 
          </MuiThemeProvider> 
