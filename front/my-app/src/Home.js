@@ -6,7 +6,7 @@ import './components/projet/Projet.css';
 import NavBar from './components/AppBar'
 import Projet from "./components/projet/Projet";
 import Profil from './components/profil/Profil'
-
+/*HE HOME PAGE FOR STUDENTS*/
 class ModalSwitch extends React.Component {
     constructor(props){
         super(props);
@@ -19,18 +19,18 @@ class ModalSwitch extends React.Component {
       render() {
           
         return (
-
+/*/CREATE ROUTES */
            <div>
              <Switch >
-   <Route exact path="/home" component={initial} />
-          <Route  path="/projet" component={Projets} /> 
-          <Route  path="/profil" component={ProfilForm} /> 
-          </Switch >  
-      </div>
-    );
-  }
-}
-
+                  <Route exact path="/home" component={initial} />
+                  <Route  path="/projet" component={Projets} /> 
+                  <Route  path="/profil" component={ProfilForm} /> 
+             </Switch >  
+           </div>
+         )
+        }
+      }
+/* COMPONENT */
 const routes = [
 
   { id: 1, title: <Projet/> },
@@ -44,23 +44,28 @@ const routes1 = [
 
 ];
 
+/*FRONT OF THIS PAGE */
 
 export const initial = () => (
-  <div>
+ 
+   <div>
          
           <div className="containers">
-
-      <a href="#" linkButton={true} href="/home"class="brand-logo center">{<img src="https://image.noelshack.com/fichiers/2018/24/3/1528883121-webp-net-resizeimage.png" />}</a>
       
-        <NavBar/>
+      <a href="#" linkButton={true} href="/home"class="brand-logo center">{<img src="https://image.noelshack.com/fichiers/2018/24/3/1528883121-webp-net-resizeimage.png" />}</a>
+    
+    
+          <NavBar/>
        
           </div>
 
 
- </div>
+   </div>
          
                
-        )
+)
+/*/CALL THE NEW ROUTE*/
+
 export const Projets= () => (
   <div>
     {routes.map(i => (
@@ -87,7 +92,7 @@ export const Projets= () => (
   );
 };
 
-
+/*CALL ANOTHER NEW ROUTE */
       export const ProfilForm= () => (
   <div>
     {routes1.map(i => (
@@ -118,7 +123,7 @@ export const Projets= () => (
 };
 
 
-
+/*EXPORT THIS FILE */
 export const Home = () => (
   <Router>
     <Route component={ModalSwitch} />

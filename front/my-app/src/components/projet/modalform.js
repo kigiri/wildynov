@@ -8,6 +8,7 @@ import withMobileDialog from '@material-ui/core/withMobileDialog';
 import RaisedButton from 'material-ui/RaisedButton';
 import TextField from '@material-ui/core/TextField';
 import './modalprovisoire.css'
+/*CREATE A MODAL WITH MATERIAL FOR A PROJECT FORM */
 class ResponsiveDialog extends React.Component {
   state = {
     open: false,
@@ -25,6 +26,7 @@ class ResponsiveDialog extends React.Component {
     const { fullScreen } = this.props;
 
     return (
+    /*PROJECTFORM*/
       <div>
           <div className="size">
              <RaisedButton onClick={this.handleClickOpen} label="ajouter un projet" primary={true}  ></RaisedButton>

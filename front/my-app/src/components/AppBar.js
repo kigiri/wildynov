@@ -7,9 +7,9 @@ import Typography from '@material-ui/core/Typography';
 import Button from '@material-ui/core/Button';
 import IconButton from '@material-ui/core/IconButton';
 import AccountCircle from '@material-ui/icons/AccountCircle';
-import MenuItem from '@material-ui/core/MenuItem';
 import Menu from '@material-ui/core/Menu';
 import RaisedButton from 'material-ui/RaisedButton';
+
 const styles = {
   root: {
     flexGrow: 1,
@@ -113,7 +113,7 @@ class MenuAppBar extends React.Component {
                 >
                  
                   {/* <MenuItem checked={auth} >Deconnexion</MenuItem> */}
-                 
+               { /*acces the route by linkbutton imported */}
                 <li className="button">
                   <RaisedButton label="Profil" linkButton={true} href="/profil" /></li>
                  <li> <RaisedButton label="Deconnexion" checked={auth}  />

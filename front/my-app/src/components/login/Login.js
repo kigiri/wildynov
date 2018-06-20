@@ -14,7 +14,7 @@ render() {
   
       
   return (
-       
+      /*CREATE ROUTES*/
         <div>
           <Switch >
             <Route exact path="/Login" component={Home} />
@@ -25,7 +25,8 @@ render() {
         </div>
         );
         }
-}
+}     
+/*CALL COMPONENT*/
   
   const routes = [
   
@@ -33,7 +34,7 @@ render() {
   
   ];
   
-  
+  /*FRONT OF THIS PAGE*/
   export const Home = () => (
 
     <div>
@@ -58,7 +59,6 @@ render() {
                  />
 
               <br/>
-              
               <RaisedButton label="Connexion" primary={true}  style={style}></RaisedButton>
               <RaisedButton label="Première connexion" primary={true} linkButton={true} href="/Login/1"/>
               
@@ -69,7 +69,7 @@ render() {
     
       </div>
   );
-  
+/*CALL THE NEW ROUTE*/
   export const Signin= () => (
     <div>
       {routes.map(i => (
@@ -96,7 +96,7 @@ render() {
      <div><h1>{route.title}</h1></div>
          );
   };
-  
+/*/EXPORT THIS FILE */
 export const Login = () => (
     <Router>
       <Route component={ModalSwitch} />

@@ -7,7 +7,7 @@ import NativeSelect from '@material-ui/core/NativeSelect';
 import Input from '@material-ui/core/Input';
 import MuiThemeProvider from 'material-ui/styles/MuiThemeProvider';
 
-
+ /*components inside the profil form */
 const styles = theme => ({
   root: {
     display: 'flex',

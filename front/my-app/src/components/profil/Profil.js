@@ -28,7 +28,9 @@ class ModalSwitch extends React.Component {
   }
   
   render() {
+
     return (
+       /*CREATE ROUTES*/
       <div>
       <Switch >
       <Route  exact path="/profil" component={ProfilForm} /> 
@@ -39,10 +41,10 @@ class ModalSwitch extends React.Component {
 }
 
 
-
+/*FRONT OF THIS PAGE */
 export const ProfilForm = () => (
 
-  
+     /* CAN CLICK ON LOGO */
       <div>
          <a href="#" linkButton={true} href="/home"class="brand-logo center">{<img src="https://image.noelshack.com/fichiers/2018/24/3/1528883121-webp-net-resizeimage.png" />}</a>
     <NavBar/>
@@ -82,6 +84,7 @@ export const ProfilForm = () => (
       
       
     )
+   /*FRONT OF THIS PAGE */
     export const Profil = () => (
       <Router>
         <Route component={ModalSwitch} />
