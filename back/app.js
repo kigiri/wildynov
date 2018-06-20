@@ -2,11 +2,13 @@ const express = require ('express');
 const bodyParser = require ('body-parser');
 const mysql = require ('mysql');
 const app = express();
-const profilRouter = require('./routes/authcontrol/auth.js')
-const connection = require('./helpers/connect.js')
-const cors = require('cors')
+const profilRouter = require('./routes/authcontrol/auth.js');
+const projetsRouter = require('./routes/allprojets/projets.js');
+const addProjetsRouter = require('./routes/allprojets/addProjets.js');
+const connection = require('./helpers/connect.js');
+const cors = require('cors');
 const morgan = require('morgan');
-const nodemailer = require('nodemailer')
+const nodemailer = require('nodemailer');
 
 
 
@@ -17,17 +19,18 @@ app.use(bodyParser.json())
 app.use(cors())
 
 ////////////ROUTING////////////////////////
-
 app.use('/auth', profilRouter)
-
+app.use('/allprojets', projetsRouter)
+app.use('/allprojets', addProjetsRouter)
 
 
 ////////////Routes//////////////////////
 
 app.get('/', (req, res) => {
- res.send('Projet  ynov');
+ res.send('Projet ynov');
 })
 
+   
 
 //////////CONNECT MYSQL//////////////
 connection.connect( (error)=>{
@@ -42,3 +45,4 @@ connection.connect( (error)=>{
 ////////////////Port server//////////////////////
 
 app.listen(8080, console.log('Je suis connecté sur le port 8080'))
+
