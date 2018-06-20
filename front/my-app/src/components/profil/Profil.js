@@ -1,4 +1,4 @@
-import React, { Component } from 'react';
+import React from 'react';
 import SelectsCampus from './SelectCampus';
 import SelectsPromo from './SelectPromo';
 import SelectSkills from './SelectSkills';
@@ -8,6 +8,8 @@ import Button from '@material-ui/core/Button';
 import TextField from 'material-ui/TextField';
 import { BrowserRouter as Router, Switch, Route } from "react-router-dom";
 import  NavBar from '../AppBar'
+
+
 const theme = createMuiTheme({
   palette: {
     primary: { main: '#3f51b5' },
@@ -84,6 +86,7 @@ export const ProfilForm = () => (
       
       
     )
+
    /*FRONT OF THIS PAGE */
     export const Profil = () => (
       <Router>
@@ -93,4 +96,8 @@ export const ProfilForm = () => (
 const style = {
   margin: 15
 };
+
+
+
+
 export default Profil;

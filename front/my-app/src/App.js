@@ -19,7 +19,7 @@ class App extends Component {
     render() {
        
         return (
-            //////////CALL ROUTES ////////////
+           /*CALL ROUTES*/
             <div className="App">
  <BrowserRouter>
  <div>

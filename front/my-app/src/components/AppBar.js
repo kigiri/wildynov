@@ -39,32 +39,9 @@ class MenuAppBar extends React.Component {
   handleClose = () => {
     this.setState({ anchorEl: null });
   };
-//   showRegister = () => {
-//     this.setState({show: 'login/1', anchorEl: null,  });
-// };
-// showProjets = () => {
-//   this.setState({show: 'projet',anchorEl: null });
-// };
-// showProfil = () => {
-//   this.setState({show: 'profil', anchorEl: null })
-// }
-  render() {
-    // let content = null;
 
-       
-    // switch(this.state.show) {
-    //     case 'Projet':
-    //         content = (< Projet/>);
-    //         break;
-    //         case 'login/1':
-    //         content = (<FormProject/>);
-    //         break;
-    //         case 'profil':
-    //         content = (<Profil/>);
-    //         break;
-    //         default:
-    //         content = '';
-    // }
+  render() {
+   
     const { classes } = this.props;
     const { auth, anchorEl } = this.state;
     const open = Boolean(anchorEl);
@@ -112,7 +89,7 @@ class MenuAppBar extends React.Component {
                   onClose={this.handleClose}
                 >
                  
-                  {/* <MenuItem checked={auth} >Deconnexion</MenuItem> */}
+                
                { /*acces the route by linkbutton imported */}
                 <li className="button">
                   <RaisedButton label="Profil" linkButton={true} href="/profil" /></li>
