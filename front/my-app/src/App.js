@@ -1,43 +1,45 @@
-import React, { Component } from 'react';
-<<<<<<< HEAD
-import Login from './components/login/Login';
+import React, {Component} from 'react';
 import './App.css';
-import MuiThemeProvider from 'material-ui/styles/MuiThemeProvider';
-import Logo from './components/Logo'
-import Register from './components/login/Register';
-import Profil from './components/profil/Profil';
-import Projet from './components/projet/Projet'
-=======
-import './App.css';
-import FormProject from './components/formProject/formProject.js'
-
-const styles= {
-  textAlign:'center',
-};
-
->>>>>>> 63cf0b381de04c8504c0f4e7a6f5508d21126f0b
-
+import { BrowserRouter, Switch, Route } from "react-router-dom";
+import {Home, Signin } from './components/login/Login';
+import {initial} from './Home';
+import { Projets, Add } from './components/projet/Projet'
+import {ProfilForm} from './components/profil/Profil'
+import ResponsiveDialog from './components/projet/modalform'
+import Login from './components/login/Login'
 class App extends Component {
-  render() {
-    return (
-<<<<<<< HEAD
-      <div>
-{/*         
-          <h1>Projet Ynov</h1> */}
+    constructor(props) {
+        super(props);
+        this.state = {
+          
+        };
+    }
 
-          <MuiThemeProvider>
 
-          <Logo />
-          <Login/>
-         {/* < Login />     */}
-         </MuiThemeProvider> 
-=======
-      <div style={styles}>
-        <FormProject/>
->>>>>>> 63cf0b381de04c8504c0f4e7a6f5508d21126f0b
-      </div>
-    );
-  }
+   
+    render() {
+       
+        return (
+            <div className="App">
+ <BrowserRouter>
+ <div>
+    <Switch >
+          <Route exact path="/Login" component={Home} />
+          <Route path="/Login/1" component={Signin} />
+          <Route exact path="/home" component={initial} />
+          <Route exact path="/projet" component={Projets} /> 
+          <Route exact path="/profil" component={ProfilForm} />   
+          {/* <Route path="/addprojet" component={Add} /> 
+        */}
+    </Switch>
+</div>
+</BrowserRouter>
+ 
+<Login/> 
+            </div>
+
+        );
+    }
 }
 
 export default App;

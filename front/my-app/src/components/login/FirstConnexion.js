@@ -2,9 +2,9 @@ import React, { Component } from 'react';
 import MuiThemeProvider from 'material-ui/styles/MuiThemeProvider';
 import RaisedButton from 'material-ui/RaisedButton';
 import TextField from 'material-ui/TextField';
-
+import Logo from '../logo/Logo'
  
-class Register extends Component {
+class FirstConnexion extends Component {
   constructor(props){
     super(props);
     this.state={
@@ -13,12 +13,15 @@ class Register extends Component {
   }
   render() {
     return (
+
+      <div>
+        <Logo/>
       <div class="register">
         <MuiThemeProvider>
           
           
            <TextField
-             hintText="Enter your Email"
+             hintText="@enov"
              type="email"
              floatingLabelText="Email"
              />
@@ -29,9 +32,10 @@ class Register extends Component {
           
          </MuiThemeProvider>
       </div>
+      </div>
     );
   }
 }
 
  
-export default Register;
+export default FirstConnexion;

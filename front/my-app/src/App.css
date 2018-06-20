@@ -1,26 +1,22 @@
-div{
+.App {
   text-align: center;
 }
-nav{
-  padding: 110px;
+.MuiButton-containedPrimary-11 {
+  color: #fff;
+  background-color: #b53f59;
 }
-.nav-wrapper{
-  padding:0;
-}
-.register{
-  padding: 110px;
-}
+.nav{
 
-h1{
-text-align: center;
+text-align: right;
+flex: right;
 }
 .App-logo {
   animation: App-logo-spin infinite 20s linear;
   height: 80px;
 }
-dMuiThemeProvide{
-  text-align: center;
-padding: 180px;
+.but {
+  color: rgba(0, 0, 0, 0.26);
+  top:20%; bottom:80%
 }
 .App-header {
   background-color: #222;

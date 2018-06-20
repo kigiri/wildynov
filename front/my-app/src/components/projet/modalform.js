@@ -1,45 +1,44 @@
-import React, { Component } from 'react';
+import React from 'react';
+import PropTypes from 'prop-types';
 import Button from '@material-ui/core/Button';
+import Dialog from '@material-ui/core/Dialog';
+import DialogActions from '@material-ui/core/DialogActions';
+import DialogTitle from '@material-ui/core/DialogTitle';
+import withMobileDialog from '@material-ui/core/withMobileDialog';
+import RaisedButton from 'material-ui/RaisedButton';
 import TextField from '@material-ui/core/TextField';
+import './modalprovisoire.css'
+class ResponsiveDialog extends React.Component {
+  state = {
+    open: false,
+  };
 
+  handleClickOpen = () => {
+    this.setState({ open: true });
+  };
 
+  handleClose = () => {
+    this.setState({ open: false });
+  };
 
-class FormProject extends Component {
-  constructor() {
-    super();
-    this.state = {
-      
-      title:"",
-      description:"",
-      deadline_project:"",
-      application:"",
-      tag:""
-    
-    };
-  }
-
-updateInputField(event){
-  this.setState({
-    
-    [event.target.name]: event.target.value
-  })
-}
-
-handleSubmit = (event) => {
-  event.preventDefault();
-  console.log(this.state,1,1);
-}
-    
   render() {
+    const { fullScreen } = this.props;
+
     return (
       <div>
-
-        <h1> Nouveau Projet </h1>
-        <br/>
-    
-
-        <form onSubmit={this.handleSubmit.bind(this)}>
-
+          <div className="size">
+             <RaisedButton onClick={this.handleClickOpen} label="ajouter un projet" primary={true}  ></RaisedButton>
+ 
+        <Dialog
+          fullScreen={fullScreen}
+          open={this.state.open}
+          onClose={this.handleClose}
+          aria-labelledby="responsive-dialog-title"
+        >
+          <DialogTitle id="responsive-dialog-title">{"Nouveau Projet"}</DialogTitle>
+          
+        <form className="form">
+       
         <TextField
         id="date"
         name="deadline_application"
@@ -49,9 +48,9 @@ handleSubmit = (event) => {
         InputLabelProps={{
           shrink: true,
         }}
-        onChange={this.updateInputField.bind(this)}
+       
       />
-
+<br />
         <TextField
         id="date"
         name="deadline_project"
@@ -61,9 +60,9 @@ handleSubmit = (event) => {
         InputLabelProps={{
           shrink: true,
         }}
-        onChange={this.updateInputField.bind(this)}
+       
       />
-
+<br />
         <div>
         <TextField
           required
@@ -75,7 +74,7 @@ handleSubmit = (event) => {
           defaultValue=""
           name="title"
           margin="normal"
-          onChange={this.updateInputField.bind(this)}
+ 
         />
         </div>
             
@@ -90,7 +89,7 @@ handleSubmit = (event) => {
           defaultValue=""
           name="description"
           margin="normal"
-          onChange={this.updateInputField.bind(this)}
+ 
         />
         </div>
         
@@ -105,24 +104,31 @@ handleSubmit = (event) => {
           defaultValue="mots clés"
           name="tag"
           margin="normal"
-          onChange={this.updateInputField.bind(this)}
+ 
         />
         </div>
         <br/>
 
-        
+      
         
        
-      <div>
-      <Button variant="contained" type="submit" color="primary">
-      Valider </Button> 
-      </div>
+
       </form>
+      
+          <DialogActions>
+            <Button onClick={this.handleClose} color="primary">
+            Valider
+            </Button>
+          </DialogActions>
+        </Dialog>
+      </div>
       </div>
     );
-  
-}
+  }
 }
 
+ResponsiveDialog.propTypes = {
+  fullScreen: PropTypes.bool.isRequired,
+};
 
-export default FormProject;
+export default withMobileDialog()(ResponsiveDialog);

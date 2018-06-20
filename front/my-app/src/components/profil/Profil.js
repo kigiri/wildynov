@@ -6,15 +6,16 @@ import { MuiThemeProvider, createMuiTheme } from '@material-ui/core/styles';
 import '../profil/Profil.css';
 import Button from '@material-ui/core/Button';
 import TextField from 'material-ui/TextField';
-import Demo from '../Demo';
-
+import { BrowserRouter as Router, Switch, Route } from "react-router-dom";
+import  NavBar from '../AppBar'
 const theme = createMuiTheme({
   palette: {
     primary: { main: '#3f51b5' },
   },
 })
 
-class Profil extends Component {
+
+class ModalSwitch extends React.Component {
   constructor(props){
     super(props);
     this.state={
@@ -29,7 +30,23 @@ class Profil extends Component {
   render() {
     return (
       <div>
-      <Demo />
+      <Switch >
+      <Route  exact path="/profil" component={ProfilForm} /> 
+        </Switch>
+        </div>
+    );
+  }
+}
+
+
+
+export const ProfilForm = () => (
+
+  
+      <div>
+         <a href="#" linkButton={true} href="/home"class="brand-logo center">{<img src="https://image.noelshack.com/fichiers/2018/24/3/1528883121-webp-net-resizeimage.png" />}</a>
+    <NavBar/>
+    
       <MuiThemeProvider theme={theme}>
       
       <nav>
@@ -65,8 +82,11 @@ class Profil extends Component {
       
       
     )
-  }
-}
+    export const Profil = () => (
+      <Router>
+        <Route component={ModalSwitch} />
+      </Router>
+    );
 const style = {
   margin: 15
 };
