@@ -4,6 +4,9 @@ const connection = require('../../helpers/connect.js');
 const nodemailer = require('nodemailer')
 const { check, validationResult } = require('express-validator/check')
 const bcrypt = require('bcrypt');
+const jwt = require('jsonwebtoken')
+const secret = require('dotenv').config()
+
 
 
 router.post('/signup', [check('email').isEmail()], (req, res) => {
@@ -79,7 +82,7 @@ bcrypt.hash(randomPass, saltRounds, function (err, hash) {
 });
 
 
-router.post('/login',[check('email').isEmail()], (req, res) => {
+router.post('/login', [check('email').isEmail()], (req, res) => {
 
   const password = req.body.password
   const email = req.body.email
@@ -103,20 +106,30 @@ router.post('/login',[check('email').isEmail()], (req, res) => {
     } else if (results.length < 1) {
       res.send({
         "code": 204,
-        "success": "Email does not exits"
+        "failed": "Email does not exits"
       });
     } else {
       bcrypt.compare(password, results[0].password, function (bcryptError, validPassword) {
         if (!validPassword || bcryptError) {
           res.send({
             "code": 204,
-            "success": "Email and password does not match"
+            "failed": "Email and password does not match"
           });
         } else {
-          res.send({
-            "code": 200,
-            "success": "login sucessfull"
-          });
+          /////////token /////////
+         const token = jwt.sign({
+            email : results[0].email,
+            userID : results[0]._id
+          }, process.env.SECRET_TOKEN, {
+              expiresIn: "1h"
+          }
+                 
+        )
+          //////////////////////////
+          res.json({
+            'token ' :token
+          })
+          
         }
       })
     }
