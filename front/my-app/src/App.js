@@ -34,8 +34,7 @@ class App extends Component {
     </Switch>
 </div>
 </BrowserRouter>
- 
-<Login/> 
+
             </div>
 
         );
