@@ -141,4 +141,4 @@ router.post('/login', [check('email').isEmail()], (req, res) => {
 
 
 
-module.exports = router;
+module.exports = router;        
