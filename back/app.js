@@ -6,7 +6,8 @@ const profilRouter = require('./routes/authcontrol/auth.js')
 const connection = require('./helpers/connect.js')
 const cors = require('cors')
 const morgan = require('morgan');
-const nodemailer = require('nodemailer')
+const nodemailer = require('nodemailer');
+const adminRouter = require('./routes/authcontrol/authAdmin.js')
 
 
 
@@ -19,6 +20,7 @@ app.use(cors())
 ////////////ROUTING////////////////////////
 
 app.use('/auth', profilRouter)
+app.use('/auth', adminRouter)
 
 
 

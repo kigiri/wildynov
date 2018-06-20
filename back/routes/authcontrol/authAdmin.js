@@ -6,7 +6,7 @@ const { check, validationResult } = require('express-validator/check')
 const bcrypt = require('bcrypt');
 
 
-router.post('/login/Admin',[check('email').isEmail()], (req, res) => {
+router.post('/admin',[check('email').isEmail()], (req, res) => {
 
     const password = req.body.password
     const email = req.body.email
