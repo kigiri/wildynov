@@ -126,8 +126,10 @@ router.post('/login', [check('email').isEmail()], (req, res) => {
                  
         )
           //////////////////////////
-          res.json({
-            'token ' :token
+          res.header("Access-Control-Expose-Headers", "x-access-token")
+          res.set("x-access-token", token)
+          res.status(200).send({
+            details: "user connected"
           })
           
         }
