@@ -70,7 +70,7 @@ class MenuAppBar extends React.Component {
                   onClick={this.handleMenu}
                   color="inherit"
                 >
-                  <AccountCircle />
+                   <AccountCircle /> 
                 </IconButton>
                 
                 

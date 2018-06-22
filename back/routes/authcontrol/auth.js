@@ -36,7 +36,7 @@ bcrypt.hash(randomPass, saltRounds, function (err, hash) {
             })
    
         } else {
-            //////////MAILING /////////////
+            //////////MAILING 
             
             nodemailer.createTestAccount((err, account) => {
                 // create reusable transporter object using the default SMTP transport
@@ -136,7 +136,7 @@ router.post('/login', [check('email').isEmail()], (req, res) => {
   })
 })
 
-
+///////////////////////////////
 
 
 

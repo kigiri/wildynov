@@ -10,7 +10,8 @@ const cors = require('cors');
 const morgan = require('morgan');
 const nodemailer = require('nodemailer')
 const validator = require('express-validator');
-const expressJWT = require('express-jwt')
+const expressJWT = require('express-jwt');
+const adminRouter = require('./routes/authcontrol/authAdmin.js');
 
 
 /////////// Middleware/////////////////////
@@ -24,6 +25,7 @@ app.use(expressJWT({secret : process.env.SECRET_TOKEN}).unless({path: ['/auth/si
 app.use('/auth', profilRouter)
 app.use('/allprojets', projetsRouter)
 app.use('/allprojets', addProjetsRouter)
+app.use('/authadmin', adminRouter)
 
 
 ////////////Routes//////////////////////

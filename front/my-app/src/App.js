@@ -6,6 +6,7 @@ import {Home, Signin } from './components/login/Login';
 import {initial} from './Home';
 import { Projets} from './components/projet/Projet'
 import {ProfilForm} from './components/profil/Profil'
+import LoginAdmin from './components/loginAdmin/LoginAdmin'
 
 
 class App extends Component {
@@ -31,7 +32,8 @@ class App extends Component {
           <Route exact path="/home" component={initial} />
           <Route exact path="/projet" component={Projets} /> 
           <Route exact path="/profil" component={ProfilForm} />   
-     
+          <Route exact path="/LoginAdmin" component={LoginAdmin} />   
+
        
     </Switch>
 </div>
