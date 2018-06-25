@@ -13,7 +13,6 @@ import PropTypes from 'prop-types'
 import Block from './Block'
 import './Projets.css'
 // import Demo from '../Demo';
-// import '../profil/Profil.css';
 
 const theme = createMuiTheme({
   palette: {
@@ -31,18 +30,31 @@ class Projets extends Component {
     super(props);
 
     this.state={
-      filtre:[]
+      filtre:[],
+      projects: []
     }
 
     this.handleSubmit = this.handleSubmit.bind(this);
     this.updateFilter = this.updateFilter.bind(this);
   }
   
+  componentDidMount() {
+    fetch('allprojets/projets', {
+        method: 'GET'
+    }).then( (response) => {
+        if (response.status >= 400) {
+            throw new Error("Bad response from server");
+        }
+        return response.json();
+    }).then( (data) => {
+        this.setState({projects: data});
+    }).catch(err => {
+    console.log('caught it!',err);
+    })
+  }
+
   handleSubmit(event) {
-    // console.log(this.state,1,1// );
     event.preventDefault()
-    // Il faut afficher dans la page les éléments rentrés dans le Texfield
-    // filtre.filter( (i) => { }
   }
 
   updateFilter = (event) => {
@@ -51,8 +63,7 @@ class Projets extends Component {
 
   render() {
     const {classes} = this.props
-    // Fonction qui filtre ou map (pour juste reprendre les infos description et titre ?)
-    // Ici, Projets serait un objet d'arrays contenant les infos "title", "description"...
+  
     // Projets.map( (i) => {
     // return (
     //   < Block 
@@ -62,7 +73,7 @@ class Projets extends Component {
       <div className={classes.root}>
       
         <MuiThemeProvider theme={theme}>
-        {/* J'ai rajouté une fonction onChange pour récupérer la valeur entrée dans le Textfield */}
+        {/*fonction onChange pour récupérer la valeur entrée dans le Textfield */}
         <TextField hintText="Nom" floatingLabelText="Nom" onChange={this.updateFilter}/>
           <Button size="small" variant="raised" color="primary"className={classes.button1}>Rechercher</Button>
           <Button size="small" variant="raised" color="primary" className={classes.button2}>+ Ajouter un projet</Button>
@@ -70,47 +81,20 @@ class Projets extends Component {
           <br />
           <br />
           <Grid container >
-            <Grid item xs={12} md={6} lg={3}>
-              < Block 
-              // title={} description={}
-              />
-            </Grid>
-            <Grid item xs={12} md={6} lg={3}>
-              < Block 
-              // title={} description={}
-              />
-            </Grid>
-            <Grid item xs={12} md={6} lg={3}>
-              < Block 
-              // title={} description={}
-              />
-            </Grid>
-            <Grid item xs={12} md={6} lg={3}>
-              < Block 
-              // title={} description={}
-              />
-            </Grid>
+            {
+              // NB: pour moi, "Projects" signifie tous les projets. L'argument "project" représente chacun des projets (chaque projet, individuellement); tandis que "i" représente chaque propriété/clef à l'intérieur de chaque projet...
+              this.state.projects.map( (project, i) => {
+                return (
+                  <Grid item xs={12} md={6} lg={3}>
+                    < Block 
+                    title={project[i].title} 
+                    description={project[i].description} 
+                    />
+                  </Grid>                                
+                )
+              })
+            }
 
-                        <Grid item xs={12} md={6} lg={3}>
-              < Block 
-              // title={} description={}
-              />
-            </Grid>
-            <Grid item xs={12} md={6} lg={3}>
-              < Block 
-              // title={} description={}
-              />
-            </Grid>
-            <Grid item xs={12} md={6} lg={3}>
-              < Block 
-              // title={} description={}
-              />
-            </Grid>
-            <Grid item xs={12} md={6} lg={3}>
-              < Block 
-              // title={} description={}
-              />
-            </Grid>
           </Grid>
         </MuiThemeProvider>
       </div>     
@@ -120,8 +104,6 @@ class Projets extends Component {
 
 const styles = theme => ({
   root: {
-    // flexGrow: 1,
-    // backgroundColor: theme.palette.background.paper
   },
   button1: {
     marginLeft: 20

@@ -11,13 +11,7 @@ import CardContent from '@material-ui/core/CardContent'
 // Le component "Button"
 import Button from '@material-ui/core/Button'
 // Le component "Divider" (équivalent au <hr />)
-import Divider from '@material-ui/core/Divider';
-
-// const theme = createMuiTheme({
-//   palette: {
-//     primary: { main: '#3f51b5' },
-//   },
-// })
+import Divider from '@material-ui/core/Divider'
 
 class Block extends Component {
   constructor(props){
@@ -37,12 +31,12 @@ class Block extends Component {
           <CardContent>
             <Typography variant="display1" color="textSecondary">
             Titre
-            {/* {props.title} */}
+            {classes.title}
             </Typography>
             <Divider/>
             <Typography component="p">
             Description
-              {/* <p>{props.description}</p> */}
+            <p>{classes.description}</p>
             </Typography>
           </CardContent>
           <CardActions>
@@ -51,7 +45,7 @@ class Block extends Component {
         </Card>
         <br />
       </div>
-  );
+    );
   }
 }
 
@@ -68,6 +62,6 @@ const styles = {
   button: {
 
   }
-};
+}
 
 export default withStyles(styles) (Block)
