@@ -3,6 +3,7 @@ import MuiThemeProvider from 'material-ui/styles/MuiThemeProvider';
 import './Login.css'
 import RaisedButton from 'material-ui/RaisedButton';
 import TextField from 'material-ui/TextField';
+
 class Login extends Component {
 constructor(props){
   super(props);
@@ -16,22 +17,27 @@ render() {
       <div>
         <MuiThemeProvider>
           
-        <nav>
+        <form>
      
            <TextField
-             hintText="Enter your Username"
-             floatingLabelText="Username"             
+            type="email"
+             hintText="Email"           
              />
+
            <br/>
+
              <TextField
                type="password"
-               hintText="Enter your Password"
-               floatingLabelText="Password"
+               hintText="Mot de passe"
                />
+
             <br/>
-             <RaisedButton label="Connexion" primary={true} style={style} />
-             <RaisedButton label="Register" primary={true} style={style} />
-             </nav>
+
+            
+             <RaisedButton label="Connection"  style={style} />
+             <RaisedButton label="Inscription" style={style} />
+             
+        </form>
              
          </MuiThemeProvider>
         

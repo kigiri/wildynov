@@ -1,8 +1,11 @@
 import React, { Component } from 'react';
-import Login from './components/login/Login';
+
 import './App.css';
 import MuiThemeProvider from 'material-ui/styles/MuiThemeProvider';
-import Logo from './components/Logo'
+import Logo from './components/Logo';
+import ClippedDrawer from './components/adminAllProjects/adminProjects'
+import EnhancedTable from './EnhancedTable';
+
 
 class App extends Component {
   render() {
@@ -13,7 +16,9 @@ class App extends Component {
 
           <MuiThemeProvider>
           <Logo />
-         < Login />    
+         < ClippedDrawer/>
+         <EnhancedTable/>
+         
          </MuiThemeProvider> 
       </div>
     );
