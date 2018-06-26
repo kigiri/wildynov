@@ -14,6 +14,7 @@ const expressJWT = require('express-jwt')
 const adminRouter = require('./routes/authcontrol/authAdmin.js')
 
 /////////// Middleware/////////////////////
+
 app.use(morgan('dev'))
 app.use(bodyParser.urlencoded({ extended: false }))
 app.use(bodyParser.json())
@@ -21,7 +22,9 @@ app.use(cors())
 app.use(validator())
 app.use(expressJWT({ secret: process.env.SECRET_TOKEN }).unless({ path: [ '/auth/signup' ] })) //protect routes
 
+
 ////////////ROUTING////////////////////////
+
 app.use('/auth', profilRouter)
 app.use('/allprojets', projetsRouter)
 app.use('/allprojets', addProjetsRouter)
