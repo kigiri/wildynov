@@ -7,6 +7,8 @@ const bcrypt = require('bcrypt')
 const jwt = require('jsonwebtoken')
 const secret = require('dotenv').config()
 
+
+
 router.post('/signup', [ check('email').isEmail() ], (req, res) => {
 	const emailing = req.body.email
 
@@ -72,6 +74,9 @@ router.post('/signup', [ check('email').isEmail() ], (req, res) => {
 		})
 	})
 })
+
+
+
 
 router.post('/login', [ check('email').isEmail() ], (req, res) => {
 	const password = req.body.password

@@ -20,6 +20,7 @@ app.use(bodyParser.json())
 app.use(cors())
 app.use(validator())
 app.use(expressJWT({ secret: process.env.SECRET_TOKEN }).unless({ path: [ '/auth/signup' ] })) //protect routes
+
 ////////////ROUTING////////////////////////
 app.use('/auth', profilRouter)
 app.use('/allprojets', projetsRouter)
