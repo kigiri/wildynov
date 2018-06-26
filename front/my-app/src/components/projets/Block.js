@@ -24,23 +24,21 @@ class Block extends Component {
   }
 
   render() {
-    const {classes} = this.props
+		const { card, title, description, button } = this.props
     return (
       <div>
-        <Card className={classes.card}>
+        <Card className={card}>
           <CardContent>
             <Typography variant="display1" color="textSecondary">
-            Titre
-            {classes.title}
+            {title}
             </Typography>
             <Divider/>
             <Typography component="p">
-            Description
-            <p>{classes.description}</p>
+            <p>{description}</p>
             </Typography>
           </CardContent>
           <CardActions>
-            <Button variant="contained" size="small" className={classes.button}>Voir +</Button>
+            <Button variant="contained" size="small" className={button}>Voir +</Button>
           </CardActions>
         </Card>
         <br />
